@@ -81,14 +81,14 @@ public class TradeStartModule<T> : ModuleBase<SocketCommandContext> where T : PK
             if (user == null) { Console.WriteLine($"User not found for ID {detail.Trainer.ID}."); return; }
 
             string speciesName = detail.TradeData != null ? GameInfo.Strings.Species[detail.TradeData.Species] : "";
-            string ballImgUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/specialrequest.gif";
+            string ballImgUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/specialrequest.gif";
 
             if (detail.TradeData != null && detail.Type != PokeTradeType.Clone && detail.Type != PokeTradeType.Dump && detail.Type != PokeTradeType.Seed && detail.Type != PokeTradeType.FixOT)
             {
                 var ballName = GameInfo.GetStrings(1).balllist[detail.TradeData.Ball]
                     .Replace(" ", "").Replace("(LA)", "").ToLower();
                 ballName = ballName == "pokéball" ? "pokeball" : (ballName.Contains("(la)") ? "la" + ballName : ballName);
-                ballImgUrl = $"https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/AltBallImg/28x28/{ballName}.png";
+                ballImgUrl = $"https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/AltBallImg/28x28/{ballName}.png";
             }
 
             string tradeTitle = detail.IsMysteryEgg ? "✨ Mystery Egg" : detail.Type switch
@@ -100,12 +100,12 @@ public class TradeStartModule<T> : ModuleBase<SocketCommandContext> where T : PK
                 _ => speciesName
             };
 
-            string embedImageUrl = detail.IsMysteryEgg ? "https://raw.githubusercontent.com/https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/mysteryegg3.png" : detail.Type switch
+            string embedImageUrl = detail.IsMysteryEgg ? "https://raw.githubusercontent.com/https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/mysteryegg3.png" : detail.Type switch
             {
-                PokeTradeType.Clone => "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/cloneball.png",
-                PokeTradeType.Dump => "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/dumpball.png",
-                PokeTradeType.FixOT => "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/fixotball.png",
-                PokeTradeType.Seed => "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/seedball.png",
+                PokeTradeType.Clone => "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/cloneball.png",
+                PokeTradeType.Dump => "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/dumpball.png",
+                PokeTradeType.FixOT => "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/fixotball.png",
+                PokeTradeType.Seed => "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/seedball.png",
                 _ => detail.TradeData != null ? AbstractTrade<T>.PokeImg(detail.TradeData, false, true) : ""
             };
 

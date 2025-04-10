@@ -17,63 +17,63 @@ public class MedalsModule : ModuleBase<SocketCommandContext>
         {
             case 1:
                 description = "Congratulations on your first trade!\n**Status:** Newbie Trainer.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/001.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/001.png";
                 break;
             case 50:
                 description = "You've reached 50 trades!\n**Status:** Novice Trainer.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/050.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/050.png";
                 break;
             case 100:
                 description = "You've reached 100 trades!\n**Status:** Pokémon Professor.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/100.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/100.png";
                 break;
             case 150:
                 description = "You've reached 150 trades!\n**Status:** Pokémon Specialist.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/150.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/150.png";
                 break;
             case 200:
                 description = "You've reached 200 trades!\n**Status:** Pokémon Champion.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/200.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/200.png";
                 break;
             case 250:
                 description = "You've reached 250 trades!\n**Status:** Pokémon Hero.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/250.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/250.png";
                 break;
             case 300:
                 description = "You've reached 300 trades!\n**Status:** Pokémon Elite.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/300.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/300.png";
                 break;
             case 350:
                 description = "You've reached 350 trades!\n**Status:** Pokémon Trader.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/350.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/350.png";
                 break;
             case 400:
                 description = "You've reached 400 trades!\n**Status:** Pokémon Sage.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/400.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/400.png";
                 break;
             case 450:
                 description = "You've reached 450 trades!\n**Status:** Pokémon Legend.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/450.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/450.png";
                 break;
             case 500:
                 description = "You've reached 500 trades!\n**Status:** Region Master.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/500.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/500.png";
                 break;
             case 550:
                 description = "You've reached 550 trades!\n**Status:** Trade Master.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/550.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/550.png";
                 break;
             case 600:
                 description = "You've reached 600 trades!\n**Status:** World Famous.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/600.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/600.png";
                 break;
             case 650:
                 description = "You've reached 650 trades!\n**Status:** Pokémon Master.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/650.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/650.png";
                 break;
             case 700:
                 description = "You've reached 700 trades!\n**Status:** Pokémon God.";
-                imageUrl = "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/700.png";
+                imageUrl = "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/700.png";
                 break;
             default:
                 description = $"Congratulations on reaching {tradeCount} trades! Keep it going!";

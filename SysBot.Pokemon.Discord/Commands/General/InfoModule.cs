@@ -31,16 +31,17 @@ namespace SysBot.Pokemon.Discord
             builder.AddField("Info",
                 $"- {Format.Bold("Owner")}: {app.Owner} ({app.Owner.Id})\n" +
                 $"- {Format.Bold("Original Source")}: {("[SysBot.Net](https://github.com/kwsch/SysBot.NET)")}\n" +
-                $"- {Format.Bold("Bot Fork")}: {("[ZE FusionBot](https://discord.com/channels/709788621896417370/1159521117854257242)")}\n" +
                 $"- {Format.Bold("Fork Base")}: {("[MergeBot](https://github.com/bdawg1989/MergeBot)")}\n" +
+                $"- {Format.Bold("Bot's Fork")}: {("[ZE FusionBot](https://github.com/Secludedly/ZE-FusionBot)")}\n" +
+                $"- {Format.Bold("Current Bot's Source")}: {("[FusionDudeBot](https://github.com/link2026/FusionDudeBot)")}\n" +
+                $"- {Format.Bold("Join the Discord!")}: {("[In Link We Trust](https://chinchou.net)")}\n" +
                 $"- {Format.Bold("Library")}: Discord.Net ({DiscordConfig.Version})\n" +
                 $"- {Format.Bold("Uptime")}: {GetUptime()}\n" +
                 $"- {Format.Bold("Runtime")}: {RuntimeInformation.FrameworkDescription} {RuntimeInformation.ProcessArchitecture}\n" +
                 $"- {Format.Bold("Buildtime")}: {GetVersionInfo("SysBot.Base", false)}\n" +
-                $"- {Format.Bold("ZE FusionBot Version")}: {TradeBot.Version}\n" +
+                $"- {Format.Bold("FusionDudeBot Version")}: {TradeBot.Version}\n" +
                 $"- {Format.Bold("Core & ALM Version")}: {GetVersionInfo("PKHeX.Core")}\n" +
-                $"- {Format.Bold("Operating System")}: {("Windows X-Lite Optimum 11 Professional 2H22")}\n" +
-                $"- {Format.Bold("Contributers")}: {("Secludedly(Sec), GenPKM.com(Gengar), DeVry, SantaCrab, Caburus(Kai), kwsch(Kurt), koiffeinated(Koi)")}\n"
+                $"- {Format.Bold("Contributers")}: {("Link2026, Havokx, Secludedly, Gengar, DeVry, SantaCrab, Kai, kwsch, Koi")}\n"
             );
 
             builder.AddField("Stats",
@@ -50,7 +51,7 @@ namespace SysBot.Pokemon.Discord
                 $"- {Format.Bold("Users")}: {Context.Client.Guilds.Sum(g => g.MemberCount)}\n"
             );
 
-            await ReplyAsync("Curious? Here's some info about me!", embed: builder.Build()).ConfigureAwait(false);
+            await ReplyAsync("Here's some info about me!", embed: builder.Build()).ConfigureAwait(false);
         }
 
         private static string GetUptime() => (DateTime.Now - Process.GetCurrentProcess().StartTime).ToString(@"dd\.hh\:mm\:ss");

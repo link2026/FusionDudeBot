@@ -22,21 +22,21 @@ namespace SysBot.Pokemon
         // Milestone image URLs
         private readonly Dictionary<int, string> _milestoneImages = new()
         {
-            { 1, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/001.png" },
-            { 50, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/050.png" },
-            { 100, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/100.png" },
-            { 150, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/150.png" },
-            { 200, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/200.png" },
-            { 250, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/250.png" },
-            { 300, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/300.png" },
-            { 350, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/350.png" },
-            { 400, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/400.png" },
-            { 450, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/450.png" },
-            { 500, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/500.png" },
-            { 550, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/550.png" },
-            { 600, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/600.png" },
-            { 650, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/650.png" },
-            { 700, "https://raw.githubusercontent.com/Secludedly/ZE-FusionBot-Sprite-Images/main/700.png" },
+            { 1, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/001.png" },
+            { 50, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/050.png" },
+            { 100, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/100.png" },
+            { 150, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/150.png" },
+            { 200, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/200.png" },
+            { 250, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/250.png" },
+            { 300, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/300.png" },
+            { 350, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/350.png" },
+            { 400, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/400.png" },
+            { 450, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/450.png" },
+            { 500, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/500.png" },
+            { 550, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/550.png" },
+            { 600, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/600.png" },
+            { 650, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/650.png" },
+            { 700, "https://raw.githubusercontent.com/Havokx89/Bot-Sprite-Images/main/700.png" },
             // Add more milestone images...
         };
 

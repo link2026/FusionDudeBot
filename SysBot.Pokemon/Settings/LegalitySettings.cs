@@ -6,7 +6,7 @@ namespace SysBot.Pokemon;
 
 public class LegalitySettings
 {
-    private string DefaultTrainerName = "FreeMons.Org";
+    private string DefaultTrainerName = "Chinchou.net";
     private const string Generate = nameof(Generate);
     private const string Misc = nameof(Misc);
     public override string ToString() => "Legality Generating Settings";
