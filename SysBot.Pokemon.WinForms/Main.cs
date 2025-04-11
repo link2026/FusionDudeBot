@@ -29,7 +29,7 @@ public sealed partial class Main : Form
     public Main()
     {
         InitializeComponent();
-        comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
+        CB_Mode.SelectedIndexChanged += new EventHandler(CB_Mode_SelectedIndexChanged);
         this.Load += async (sender, e) => await InitializeAsync();
 
     }
@@ -52,7 +52,7 @@ public sealed partial class Main : Form
             Config = JsonSerializer.Deserialize(lines, ProgramConfigContext.Default.ProgramConfig) ?? new ProgramConfig();
             LogConfig.MaxArchiveFiles = Config.Hub.MaxArchiveFiles;
             LogConfig.LoggingEnabled = Config.Hub.LoggingEnabled;
-            comboBox1.SelectedValue = (int)Config.Mode;
+            CB_Mode.SelectedValue = (int)Config.Mode;
             RunningEnvironment = GetRunner(Config);
             foreach (var bot in Config.Bots)
             {
@@ -130,92 +130,92 @@ public sealed partial class Main : Form
             .Select(mode => new { Text = mode.ToString(), Value = (int)mode })
             .ToList();
 
-        comboBox1.DisplayMember = "Text";
-        comboBox1.ValueMember = "Value";
-        comboBox1.DataSource = gameModes;
+        CB_Mode.DisplayMember = "Text";
+        CB_Mode.ValueMember = "Value";
+        CB_Mode.DataSource = gameModes;
 
         // Set the current mode as selected in the dropdown
-        comboBox1.SelectedValue = (int)Config.Mode;
+        CB_Mode.SelectedValue = (int)Config.Mode;
 
-        comboBox2.Items.Add("Light");
-        comboBox2.Items.Add("Dark");
-        comboBox2.Items.Add("Poke");
-        comboBox2.Items.Add("Gengar");
-        comboBox2.Items.Add("Zeraora");
-        comboBox2.Items.Add("Shiny Zeraora");
-        comboBox2.Items.Add("Green");
-        comboBox2.Items.Add("Blue");
-        comboBox2.Items.Add("Akatsuki");
-        comboBox2.Items.Add("Naruto");
-        comboBox2.Items.Add("Shiny Mewtwo");
-        comboBox2.Items.Add("Shiny Umbreon");
-        comboBox2.Items.Add("Scarlet");
-        comboBox2.Items.Add("Violet");
-        comboBox2.Items.Add("Black & White");
-        comboBox2.Items.Add("Messy Colors");
-        comboBox2.Items.Add("Pitch Black");
+        CB_Theme.Items.Add("Light Theme");
+        CB_Theme.Items.Add("Dark Theme");
+        CB_Theme.Items.Add("Pokémon Theme");
+        CB_Theme.Items.Add("Gengar Theme");
+        CB_Theme.Items.Add("Zeraora Theme");
+        CB_Theme.Items.Add("Shiny Zeraora Theme");
+        CB_Theme.Items.Add("Green Theme");
+        CB_Theme.Items.Add("Blue Theme");
+        CB_Theme.Items.Add("Akatsuki Theme");
+        CB_Theme.Items.Add("Naruto Theme");
+        CB_Theme.Items.Add("Shiny Mewtwo Theme");
+        CB_Theme.Items.Add("Shiny Umbreon Theme");
+        CB_Theme.Items.Add("Scarlet Theme");
+        CB_Theme.Items.Add("Violet Theme");
+        CB_Theme.Items.Add("Black & White Theme");
+        CB_Theme.Items.Add("Messy Colors Theme");
+        CB_Theme.Items.Add("Pitch Black Theme");
 
-        // Load the current theme from configuration and set it in the comboBox2
+        // Load the current theme from configuration and set it in the CB_Theme
         string theme = Config.Hub.ThemeOption;
-        if (string.IsNullOrEmpty(theme) || !comboBox2.Items.Contains(theme))
+        if (string.IsNullOrEmpty(theme) || !CB_Theme.Items.Contains(theme))
         {
-            comboBox2.SelectedIndex = 0;  // Set default selection to Light Mode if ThemeOption is empty or invalid
+            CB_Theme.SelectedIndex = 0;  // Set default selection to Light Mode if ThemeOption is empty or invalid
         }
         else
         {
-            comboBox2.SelectedItem = theme;  // Set the selected item in the combo box based on ThemeOption
+            CB_Theme.SelectedItem = theme;  // Set the selected item in the combo box based on ThemeOption
         }
         switch (theme)
         {
-            case "Dark":
-                ApplyDarkTheme();
-                break;
-            case "Light":
+            case "Light Theme":
                 ApplyLightTheme();
                 break;
-            case "Poke":
+            case "Dark Theme":
+                ApplyDarkTheme();
+                break;
+            case "Pokémon Theme":
                 ApplyPokemonTheme();
                 break;
-            case "Gengar":
+            case "Gengar Theme":
                 ApplyGengarTheme();
                 break;
-            case "Zeraora":
+            case "Zeraora Theme":
                 ApplyZeraoraTheme();
                 break;
-            case "Shiny Zeraora":
+            case "Shiny Zeraora Theme":
                 ApplyShinyZeraoraTheme();
                 break;
-            case "Green":
+            case "Green Theme":
                 ApplyGreenTheme();
                 break;
-            case "Blue":
+            case "Blue Theme":
                 ApplyBlueTheme();
                 break;
-            case "Akatsuki":
+            case "Akatsuki Theme":
                 ApplyAkatsukiTheme();
                 break;
-            case "Naruto":
+            case "Naruto Theme":
                 ApplyNarutoTheme();
                 break;
-            case "Shiny Mewtwo":
+            case "Shiny Mewtwo Theme":
                 ApplyShinyMewtwoTheme();
                 break;
-            case "Shiny Umbreon":
+            case "Shiny Umbreon Theme":
                 ApplyShinyUmbreonTheme();
                 break;
-            case "Scarlet":
+            case "Scarlet Theme":
                 ApplyPokemonScarletTheme();
                 break;
-            case "Violet":
+            case "Violet Theme":
                 ApplyPokemonVioletTheme();
                 break;
-            case "Black & White":
+            case "Black & White Theme":
                 ApplyBlackAndWhiteTheme();
                 break;
-            case "Messy Colors":
+            case "Messy Colors Theme":
                 ApplyRainbowTheme();
                 break;
-            case "Pitch Black":
+            case "Pitch Black Theme":
                 ApplyPitchBlackTheme();
                 break;
             default:
@@ -267,11 +267,11 @@ public sealed partial class Main : Form
     [JsonSerializable(typeof(ProgramConfig))]
     [JsonSourceGenerationOptions(WriteIndented = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
     public sealed partial class ProgramConfigContext : JsonSerializerContext;
-    private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+    private void CB_Mode_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (_isFormLoading) return; // Check to avoid processing during form loading
 
-        if (comboBox1.SelectedValue is int selectedValue)
+        if (CB_Mode.SelectedValue is int selectedValue)
         {
             ProgramMode newMode = (ProgramMode)selectedValue;
             Config.Mode = newMode;
@@ -502,7 +502,7 @@ public sealed partial class Main : Form
         TB_IP.Visible = CB_Protocol.SelectedIndex == 0;
     }
 
-    private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+    private void CB_Theme_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (sender is ComboBox comboBox)
         {
@@ -512,55 +512,55 @@ public sealed partial class Main : Form
 
             switch (selectedTheme)
             {
-                case "Light":
+                case "Light Theme":
                     ApplyLightTheme();
                     break;
-                case "Dark":
+                case "Dark Theme":
                     ApplyDarkTheme();
                     break;
-                case "Poke":
+                case "Pokémon Theme":
                     ApplyPokemonTheme();
                     break;
-                case "Gengar":
+                case "Gengar Theme":
                     ApplyGengarTheme();
                     break;
-                case "Zeraora":
+                case "Zeraora Theme":
                     ApplyZeraoraTheme();
                     break;
-                case "Shiny Zeraora":
+                case "Shiny Zeraora Theme":
                     ApplyShinyZeraoraTheme();
                     break;
-                case "Green":
+                case "Green Theme":
                     ApplyGreenTheme();
                     break;
-                case "Blue":
+                case "Blue Theme":
                     ApplyBlueTheme();
                     break;
-                case "Akatsuki":
+                case "Akatsuki Theme":
                     ApplyAkatsukiTheme();
                     break;
-                case "Naruto":
+                case "Naruto Theme":
                     ApplyNarutoTheme();
                     break;
-                case "Shiny Mewtwo":
+                case "Shiny Mewtwo Theme":
                     ApplyShinyMewtwoTheme();
                     break;
-                case "Shiny Umbreon":
+                case "Shiny Umbreon Theme":
                     ApplyShinyUmbreonTheme();
                     break;
-                case "Scarlet":
+                case "Scarlet Theme":
                     ApplyPokemonScarletTheme();
                     break;
-                case "Violet":
+                case "Violet Theme":
                     ApplyPokemonVioletTheme();
                     break;
-                case "Black & White":
+                case "Black & White Theme":
                     ApplyBlackAndWhiteTheme();
                     break;
-                case "Messy Colors":
+                case "Messy Colors Theme":
                     ApplyRainbowTheme();
                     break;
-                case "Pitch Black":
+                case "Pitch Black Theme":
                     ApplyPitchBlackTheme();
                     break;
                 default:
@@ -625,8 +625,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = MediumDarkGray;             // Medium-dark gray for protocol combo box background
         CB_Protocol.ForeColor = White;                       // White text color for protocol combo box
 
-        comboBox1.BackColor = MediumDarkGray;               // Medium-dark gray for combo box background
-        comboBox1.ForeColor = White;                         // White text color for combo box
+        CB_Mode.BackColor = MediumDarkGray;               // Medium-dark gray for combo box background
+        CB_Mode.ForeColor = White;                         // White text color for combo box
 
         B_Stop.BackColor = SkyBlue;                         // Sky blue for STOP button background
         B_Stop.ForeColor = White;                            // White text color for STOP button font
@@ -639,6 +639,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = SkyBlue;                        // Sky blue for updater background
         updater.ForeColor = White;                           // White text color for updater font
+
+        CB_Theme.BackColor = MediumDarkGray;               // Medium-dark gray for combo box background
+        CB_Theme.ForeColor = White;
     }
 
     private void ApplyShinyZeraoraTheme()
@@ -698,8 +701,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = SoftMatteWhite;
         CB_Protocol.ForeColor = SoftMatteText;
 
-        comboBox1.BackColor = SoftMatteWhite;
-        comboBox1.ForeColor = SoftMatteText;
+        CB_Mode.BackColor = SoftMatteWhite;
+        CB_Mode.ForeColor = SoftMatteText;
 
         B_Stop.BackColor = SoftMatteTeal;
         B_Stop.ForeColor = SoftMatteWhite;
@@ -712,6 +715,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = SoftMatteGold;
         updater.ForeColor = SoftMatteText;
+
+        CB_Theme.BackColor = SoftMatteWhite;
+        CB_Theme.ForeColor = SoftMatteText;
     }
 
     private void ApplyGengarTheme()
@@ -770,8 +776,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = GengarPurple;
         CB_Protocol.ForeColor = GhostlyGrey;
 
-        comboBox1.BackColor = GengarPurple;
-        comboBox1.ForeColor = GhostlyGrey;
+        CB_Mode.BackColor = GengarPurple;
+        CB_Mode.ForeColor = GhostlyGrey;
 
         B_Stop.BackColor = HauntingBlue;
         B_Stop.ForeColor = GhostlyGrey;
@@ -785,6 +791,8 @@ public sealed partial class Main : Form
         updater.BackColor = HauntingShadows;
         updater.ForeColor = GhostlyGrey;
 
+        CB_Theme.BackColor = GengarPurple;
+        CB_Theme.ForeColor = GhostlyGrey;
     }
 
     private void ApplyLightTheme()
@@ -794,6 +802,7 @@ public sealed partial class Main : Form
         Color GentleGrey = Color.FromArgb(245, 245, 245);
         Color DarkBlue = Color.FromArgb(26, 13, 171);
         Color HarderSoftBlue = Color.FromArgb(240, 245, 255);
+        Color GentleGreen = Color.FromArgb(192, 255, 192);
 
         // Set the background color of the form
         this.BackColor = GentleGrey;
@@ -842,21 +851,23 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = Color.White;
         CB_Protocol.ForeColor = DarkBlue;
 
-        comboBox1.BackColor = Color.White;
-        comboBox1.ForeColor = DarkBlue;
+        CB_Mode.BackColor = Color.White;
+        CB_Mode.ForeColor = DarkBlue;
 
-        B_Stop.BackColor = SoftBlue;
-        B_Stop.ForeColor = DarkBlue;
+        B_Stop.BackColor = Color.Maroon;
+        B_Stop.ForeColor = Color.WhiteSmoke;
 
-        B_Start.BackColor = SoftBlue;
-        B_Start.ForeColor = DarkBlue;
+        B_Start.BackColor = GentleGreen;
+        B_Start.ForeColor = Color.ForestGreen;
 
-        B_RebootStop.BackColor = HarderSoftBlue;
-        B_RebootStop.ForeColor = DarkBlue;
+        B_RebootStop.BackColor = Color.PowderBlue;
+        B_RebootStop.ForeColor = Color.SteelBlue;
 
-        updater.BackColor = HarderSoftBlue;
-        updater.ForeColor = DarkBlue;
+        updater.BackColor = Color.Gray;
+        updater.ForeColor = Color.Gainsboro;
 
+        CB_Theme.BackColor = Color.White;
+        CB_Theme.ForeColor = DarkBlue;
     }
 
     private void ApplyPokemonTheme()
@@ -867,7 +878,6 @@ public sealed partial class Main : Form
         Color SleekGrey = Color.FromArgb(46, 49, 54);     // A sleek grey for background and contrast
         Color SoftWhite = Color.FromArgb(230, 230, 230);  // A soft white for text and borders
         Color MidnightBlack = Color.FromArgb(18, 19, 20); // A near-black for darker elements and depth
-        Color PokeRedShadow = Color.FromArgb(183, 1, 19); // A classic red tone reminiscent of the Pokeball in a dark shadow
 
         // Set the background color of the form
         this.BackColor = SleekGrey;
@@ -916,8 +926,11 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = DarkPokeRed;
         CB_Protocol.ForeColor = SoftWhite;
 
-        comboBox1.BackColor = DarkPokeRed;
-        comboBox1.ForeColor = SoftWhite;
+        CB_Mode.BackColor = DarkPokeRed;
+        CB_Mode.ForeColor = SoftWhite;
+
+        CB_Theme.BackColor = DarkPokeRed;
+        CB_Theme.ForeColor = SoftWhite;
 
         B_Stop.BackColor = PokeRed;
         B_Stop.ForeColor = SoftWhite;
@@ -925,12 +938,14 @@ public sealed partial class Main : Form
         B_Start.BackColor = PokeRed;
         B_Start.ForeColor = SoftWhite;
 
-        B_RebootStop.BackColor = PokeRedShadow;
+        B_RebootStop.BackColor = PokeRed;
         B_RebootStop.ForeColor = SoftWhite;
 
-        updater.BackColor = PokeRedShadow;
+        updater.BackColor = PokeRed;
         updater.ForeColor = SoftWhite;
 
+        CB_Theme.BackColor = DarkPokeRed;
+        CB_Theme.ForeColor = SoftWhite;
     }
 
     private void ApplyDarkTheme()
@@ -940,8 +955,7 @@ public sealed partial class Main : Form
         Color DarkGrey = Color.FromArgb(30, 30, 30);
         Color LightGrey = Color.FromArgb(60, 60, 60);
         Color SoftWhite = Color.FromArgb(245, 245, 245);
-        Color DarkRedShadow = Color.FromArgb(65, 2, 2);
-
+        
         // Set the background color of the form
         this.BackColor = DarkGrey;
 
@@ -989,8 +1003,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = LightGrey;
         CB_Protocol.ForeColor = SoftWhite;
 
-        comboBox1.BackColor = LightGrey;
-        comboBox1.ForeColor = SoftWhite;
+        CB_Mode.BackColor = LightGrey;
+        CB_Mode.ForeColor = SoftWhite;
 
         B_Stop.BackColor = DarkRed;
         B_Stop.ForeColor = SoftWhite;
@@ -998,12 +1012,14 @@ public sealed partial class Main : Form
         B_Start.BackColor = DarkRed;
         B_Start.ForeColor = SoftWhite;
 
-        B_RebootStop.BackColor = DarkRedShadow;
+        B_RebootStop.BackColor = DarkRed;
         B_RebootStop.ForeColor = SoftWhite;
 
-        updater.BackColor = DarkRedShadow;
+        updater.BackColor = DarkRed;
         updater.ForeColor = SoftWhite;
 
+        CB_Theme.BackColor = LightGrey;
+        CB_Theme.ForeColor = SoftWhite;
     }
 
 
@@ -1065,8 +1081,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = DarkGreenBG;
         CB_Protocol.ForeColor = WhiteSoft;
 
-        comboBox1.BackColor = DarkGreenBG;
-        comboBox1.ForeColor = WhiteSoft;
+        CB_Mode.BackColor = DarkGreenBG;
+        CB_Mode.ForeColor = WhiteSoft;
 
         B_Stop.BackColor = LightTurqoise;
         B_Stop.ForeColor = DarkGreenBG;
@@ -1080,6 +1096,8 @@ public sealed partial class Main : Form
         updater.BackColor = DarkNuclear;
         updater.ForeColor = WhiteSoft;
 
+        CB_Theme.BackColor = DarkGreenBG;
+        CB_Theme.ForeColor = WhiteSoft;
     }
 
     private void ApplyBlueTheme()
@@ -1139,8 +1157,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = DarkBlueBG;
         CB_Protocol.ForeColor = WhiteSoft;
 
-        comboBox1.BackColor = DarkBlueBG;
-        comboBox1.ForeColor = WhiteSoft;
+        CB_Mode.BackColor = DarkBlueBG;
+        CB_Mode.ForeColor = WhiteSoft;
 
         B_Stop.BackColor = LightBlue;
         B_Stop.ForeColor = DarkBlueBG;
@@ -1154,6 +1172,8 @@ public sealed partial class Main : Form
         updater.BackColor = BrightBlue;
         updater.ForeColor = WhiteSoft;
 
+        CB_Theme.BackColor = DarkBlueBG;
+        CB_Theme.ForeColor = WhiteSoft;
     }
 
     private void ApplyAkatsukiTheme()
@@ -1212,8 +1232,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = CrimsonBloodyRed;
         CB_Protocol.ForeColor = SoftGrey;
 
-        comboBox1.BackColor = CrimsonBloodyRed;
-        comboBox1.ForeColor = SoftGrey;
+        CB_Mode.BackColor = CrimsonBloodyRed;
+        CB_Mode.ForeColor = SoftGrey;
 
         B_Stop.BackColor = DarkNearBlack;
         B_Stop.ForeColor = BrightRed;
@@ -1226,6 +1246,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = DarkNearBlack;
         updater.ForeColor = BrightRed;
+
+        CB_Theme.BackColor = CrimsonBloodyRed;
+        CB_Theme.ForeColor = SoftGrey;
     }
 
     private void ApplyNarutoTheme()
@@ -1283,8 +1306,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = MatteOrange;
         CB_Protocol.ForeColor = SoftGray;
 
-        comboBox1.BackColor = MatteOrange;
-        comboBox1.ForeColor = SoftGray;
+        CB_Mode.BackColor = MatteOrange;
+        CB_Mode.ForeColor = SoftGray;
 
         B_Stop.BackColor = BlackGray;
         B_Stop.ForeColor = MatteOrange;
@@ -1297,6 +1320,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = BlackGray;
         updater.ForeColor = MatteOrange;
+
+        CB_Theme.BackColor = MatteOrange;
+        CB_Theme.ForeColor = SoftGray;
     }
         private void ApplyShinyMewtwoTheme()
     {
@@ -1352,8 +1378,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = SoftLimeGreen;
         CB_Protocol.ForeColor = Black;  // Change SoftWhite to Black
 
-        comboBox1.BackColor = SoftLimeGreen;
-        comboBox1.ForeColor = Black;  // Change SoftWhite to Black
+        CB_Mode.BackColor = SoftLimeGreen;
+        CB_Mode.ForeColor = Black;  // Change SoftWhite to Black
 
         B_Stop.BackColor = SoftLimeGreen;
         B_Stop.ForeColor = Black;
@@ -1366,6 +1392,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = SoftLimeGreen;
         updater.ForeColor = Black;
+
+        CB_Theme.BackColor = SoftLimeGreen;
+        CB_Theme.ForeColor = Black;  // Change SoftWhite to Black
     }
 
     private void ApplyShinyUmbreonTheme()
@@ -1420,11 +1449,11 @@ public sealed partial class Main : Form
 
         FLP_Bots.BackColor = DarkGray;
 
-        CB_Protocol.BackColor = DarkBlue;
-        CB_Protocol.ForeColor = DarkBlue;
+        CB_Protocol.BackColor = Black;
+        CB_Protocol.ForeColor = White;
 
-        comboBox1.BackColor = DarkBlue;
-        comboBox1.ForeColor = DarkBlue;
+        CB_Mode.BackColor = Black;
+        CB_Mode.ForeColor = White;
 
         B_Stop.BackColor = DarkBlue;
         B_Stop.ForeColor = White;
@@ -1437,6 +1466,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = DarkBlue;
         updater.ForeColor = White;
+
+        CB_Theme.BackColor = Black;
+        CB_Theme.ForeColor = White;
     }
     private void ApplyBlackAndWhiteTheme()
     {
@@ -1493,8 +1525,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = SoftGray;                  // Soft gray for protocol combo box background
         CB_Protocol.ForeColor = Black;                       // Black text color for protocol combo box
 
-        comboBox1.BackColor = MediumGray;                   // Medium gray for combo box background
-        comboBox1.ForeColor = Black;                         // Black text color for combo box
+        CB_Mode.BackColor = MediumGray;                   // Medium gray for combo box background
+        CB_Mode.ForeColor = Black;                         // Black text color for combo box
 
         B_Stop.BackColor = MediumGray;                      // Medium gray for STOP button background
         B_Stop.ForeColor = White;                            // White text color for STOP button font
@@ -1507,6 +1539,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = MediumGray;                     // Medium gray for updater background
         updater.ForeColor = White;                           // White text color for updater font
+
+        CB_Theme.BackColor = MediumGray;
+        CB_Theme.ForeColor = Black;
     }
     private void ApplyPokemonScarletTheme()
     {
@@ -1563,8 +1598,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = SoftRed;                     // Softened red for protocol combo box background
         CB_Protocol.ForeColor = White;                        // White text color for protocol combo box
 
-        comboBox1.BackColor = MatteYellow;                   // Matte yellow for combo box background
-        comboBox1.ForeColor = White;                         // White text color for combo box
+        CB_Mode.BackColor = MatteYellow;                   // Matte yellow for combo box background
+        CB_Mode.ForeColor = White;                         // White text color for combo box
 
         B_Stop.BackColor = DarkRed;                      // Dark red for STOP button background
         B_Stop.ForeColor = White;                            // White text color for STOP button font
@@ -1577,6 +1612,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = DarkRed;                     // Matte yellow for updater background
         updater.ForeColor = White;                           // White text color for updater font
+
+        CB_Theme.BackColor = MatteYellow;
+        CB_Theme.ForeColor = White;
     }
     private void ApplyPokemonVioletTheme()
     {
@@ -1633,8 +1671,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = SoftViolet;                      // Softened violet for protocol combo box background
         CB_Protocol.ForeColor = White;                           // White text color for protocol combo box
 
-        comboBox1.BackColor = MatteYellow;                      // Matte yellow for combo box background
-        comboBox1.ForeColor = White;                            // White text color for combo box
+        CB_Mode.BackColor = MatteYellow;                      // Matte yellow for combo box background
+        CB_Mode.ForeColor = White;                            // White text color for combo box
 
         B_Stop.BackColor = DarkViolet;                          // Dark violet for STOP button background
         B_Stop.ForeColor = White;                                // White text color for STOP button font
@@ -1647,6 +1685,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = DarkViolet;                         // Dark violet for updater background
         updater.ForeColor = White;                               // White text color for updater font
+
+        CB_Theme.BackColor = MatteYellow;
+        CB_Theme.ForeColor = White;
     }
     private void ApplyRainbowTheme()
     {
@@ -1707,8 +1748,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = DarkViolet;                 // Dark violet for protocol combo box background
         CB_Protocol.ForeColor = White;                       // White text color for protocol combo box
 
-        comboBox1.BackColor = DarkRed;                      // Dark red for combo box background
-        comboBox1.ForeColor = White;                         // White text color for combo box
+        CB_Mode.BackColor = DarkRed;                      // Dark red for combo box background
+        CB_Mode.ForeColor = White;                         // White text color for combo box
 
         B_Stop.BackColor = DarkOrange;                      // Dark orange for STOP button background
         B_Stop.ForeColor = White;                            // White text color for STOP button font
@@ -1721,7 +1762,11 @@ public sealed partial class Main : Form
 
         updater.BackColor = DarkBlue;                      // Dark blue for updater background
         updater.ForeColor = White;                           // White text color for updater font
+
+        CB_Theme.BackColor = DarkRed;
+        CB_Theme.ForeColor = White;
     }
+    
     private void ApplyPitchBlackTheme()
     {
         // Set the background color of the Hub form
@@ -1771,8 +1816,8 @@ public sealed partial class Main : Form
         CB_Protocol.BackColor = Color.Black;       // Black protocol combo box background
         CB_Protocol.ForeColor = Color.White;       // White protocol combo box text color
 
-        comboBox1.BackColor = Color.Black;         // Black combo box background
-        comboBox1.ForeColor = Color.White;         // White combo box text color
+        CB_Mode.BackColor = Color.Black;         // Black combo box background
+        CB_Mode.ForeColor = Color.White;         // White combo box text color
 
         B_Stop.BackColor = Color.Black;            // Black STOP button background
         B_Stop.ForeColor = Color.White;            // White STOP button text color
@@ -1785,6 +1830,9 @@ public sealed partial class Main : Form
 
         updater.BackColor = Color.Black;           // Black updater background
         updater.ForeColor = Color.White;           // White updater text color
+
+        CB_Theme.BackColor = Color.Black;
+        CB_Theme.ForeColor = Color.White;
     }
 }
 
