@@ -13,8 +13,11 @@ namespace SysBot.Pokemon.Discord
 {
     public class InfoModule : ModuleBase<SocketCommandContext>
     {
-        private const string detail = "I am a free and open-source Discord bot powered by PKHeX & AutoLegalityMod, upgraded through time, in pieces, by a collaboration of multiple developers of all skill levels with bright ideas and a hobby.";
-        private const string repo = "[Original Source](https://github.com/kwsch/SysBot.NET)";
+        private const string detail = "I am a free and open-source Discord bot powered by PKHeX & AutoLegalityMod, upgraded by the Brother Dudes.";
+        private const string ogrepo = "https://github.com/kwsch/SysBot.NET";
+        private const string ogfork = "https://github.com/Secludedly/ZE-FusionBot";
+        private const string dude = "https://github.com/link2026/FusionDudeBot";
+        private const string dcord = "https://chinchou.net";
 
         [Command("info")]
         [Alias("about", "whoami", "owner", "bot")]
@@ -30,18 +33,17 @@ namespace SysBot.Pokemon.Discord
 
             builder.AddField("Info",
                 $"- {Format.Bold("Owner")}: {app.Owner} ({app.Owner.Id})\n" +
-                $"- {Format.Bold("Original Source")}: {("[SysBot.Net](https://github.com/kwsch/SysBot.NET)")}\n" +
-                $"- {Format.Bold("Fork Base")}: {("[MergeBot](https://github.com/bdawg1989/MergeBot)")}\n" +
-                $"- {Format.Bold("Bot's Fork")}: {("[ZE FusionBot](https://github.com/Secludedly/ZE-FusionBot)")}\n" +
-                $"- {Format.Bold("Current Bot's Source")}: {("[FusionDudeBot](https://github.com/link2026/FusionDudeBot)")}\n" +
-                $"- {Format.Bold("Join the Discord!")}: {("[In Link We Trust](https://chinchou.net)")}\n" +
+                $"- {Format.Bold("Original Source")}: [SysBot.NET]({ogrepo})\n" +
+                $"- {Format.Bold("Original Fork")}: [ZE FusionBot]({ogfork})\n" +
+                $"- {Format.Bold("Current Source")}: [FusionDudeBot]({dude})\n" +
+                $"- {Format.Bold("Join the Discord!")}: [In Link We Trust]({dcord})\n" +
                 $"- {Format.Bold("Library")}: Discord.Net ({DiscordConfig.Version})\n" +
                 $"- {Format.Bold("Uptime")}: {GetUptime()}\n" +
                 $"- {Format.Bold("Runtime")}: {RuntimeInformation.FrameworkDescription} {RuntimeInformation.ProcessArchitecture}\n" +
                 $"- {Format.Bold("Buildtime")}: {GetVersionInfo("SysBot.Base", false)}\n" +
                 $"- {Format.Bold("FusionDudeBot Version")}: {TradeBot.Version}\n" +
                 $"- {Format.Bold("Core & ALM Version")}: {GetVersionInfo("PKHeX.Core")}\n" +
-                $"- {Format.Bold("Contributers")}: {("Link2026, Havokx, Secludedly, Gengar, DeVry, SantaCrab, Kai, kwsch, Koi")}\n"
+                $"- {Format.Bold("Contributers")}: {("Link2026, Havokx, Secludedly, Kai, kwsch, Koi")}\n"
             );
 
             builder.AddField("Stats",

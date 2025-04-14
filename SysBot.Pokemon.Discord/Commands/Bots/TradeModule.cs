@@ -530,7 +530,7 @@ public class TradeModule<T> : ModuleBase<SocketCommandContext> where T : PKM, ne
                 {
                     if (AbstractTrade<T>.HasAdName(pk, out string ad))
                     {
-                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed. You also suck for trying.", 5);
+                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed.", 5);
                         return;
                     }
                 }
@@ -752,7 +752,7 @@ public class TradeModule<T> : ModuleBase<SocketCommandContext> where T : PKM, ne
                 {
                     if (AbstractTrade<T>.HasAdName(pk, out string ad))
                     {
-                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed. You also suck for trying.", 5);
+                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed.", 5);
                         return;
                     }
                 }
@@ -1001,7 +1001,7 @@ public class TradeModule<T> : ModuleBase<SocketCommandContext> where T : PKM, ne
                 {
                     if (AbstractTrade<T>.HasAdName(pk, out string ad))
                     {
-                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed. You also suck for trying.", 5);
+                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed.", 5);
                         return;
                     }
                 }
@@ -1166,7 +1166,7 @@ public class TradeModule<T> : ModuleBase<SocketCommandContext> where T : PKM, ne
                 {
                     if (AbstractTrade<T>.HasAdName(pk, out string ad))
                     {
-                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed. You also suck for trying.", 5);
+                        await ReplyAndDeleteAsync("Detected Admon URL in the Pokémon's nickname or OT, which is not allowed.", 5);
                         return;
                     }
                 }

@@ -320,7 +320,7 @@ namespace SysBot.Pokemon.WinForms
             // 
             // PNL_Buttons
             // 
-            PNL_Buttons.BackColor = SystemColors.Window;
+            PNL_Buttons.BackColor = Color.WhiteSmoke;
             PNL_Buttons.Controls.Add(updater);
             PNL_Buttons.Controls.Add(B_Stop);
             PNL_Buttons.Controls.Add(B_RebootStop);

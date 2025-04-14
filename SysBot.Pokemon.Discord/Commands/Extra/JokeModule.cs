@@ -118,7 +118,8 @@ public class JokeModule : ModuleBase<SocketCommandContext>
         "Did you hear about the guy who died of a Viagra overdose? They couldn't close his casket.",
         "What did the elephant ask the naked man? How do you breathe out of that thing.",
         "What's Moby Dick's dad's name? Papa Boner.",
-        "What's green and smells like pork? Kermit's finger."
+        "What's green and smells like pork? Kermit's finger.",
+        "What're three two-letter words that mean small? Is it in?"
 
 
 

@@ -82,7 +82,7 @@ public class TradeSettings : IBotStateSettings, ICountSettings
         [Category(TradeConfig), Description("Toggle to allow or disallow batch trades."), DisplayName("Allow Batch Trades")]
         public bool AllowBatchTrades { get; set; } = true;
 
-        [Category(TradeConfig), Description("Maximum pokemons of single trade. Batch mode will be closed if this configuration is less than 1"), DisplayName("Maximum Pokémon per Trade")]
+        [Category(TradeConfig), Description("Maximum number of Pokémon in a single trade. Batch mode will be closed if this configuration is less than 1"), DisplayName("Maximum Pokémon per Trade")]
         public int MaxPkmsPerTrade { get; set; } = 1;
 
         [Category(TradeConfig), Description("Dump Trade: Dumping routine will stop after a maximum number of dumps from a single user."), DisplayName("Maximum Dumps per Trade")]
@@ -93,7 +93,8 @@ public class TradeSettings : IBotStateSettings, ICountSettings
 
         [Category(TradeConfig), Description("Dump Trade: If enabled, Dumping routine will output legality check information to the user."), DisplayName("Dump Trade Legality Check")]
         public bool DumpTradeLegalityCheck { get; set; } = true;
-        public bool EnableSpamCheck { get; set; }
+        [Category(TradeConfig), Description("Spam Check: If enabled, blocks the possibility of creating admons. This setting can't be turned off."), DisplayName("Enable Spam Check")]
+        public bool EnableSpamCheck { get; protected set; } = true;
 
         [Category(TradeConfig), Description("LGPE Setting.")]
         public int TradeAnimationMaxDelaySeconds = 25;
@@ -388,7 +389,7 @@ public class TradeSettings : IBotStateSettings, ICountSettings
         public bool AllowRequests { get; set; } = true;
 
         [Category(VGCPastesConfig), Description("GID of Spreadsheet tab you would like to pull from. Hint: https://docs.google.com/spreadsheets/d/ID/gid=1837599752"), DisplayName("GID of Spreadsheet Tab")]
-        public int GID { get; set; } = 1837599752; // Reg F Tab
+        public int GID { get; set; } = 418553327; // Reg G Tab
     }
 
     [Category(RequestFolders), TypeConverter(typeof(CategoryConverter<RequestFolderSettingsCategory>))]
